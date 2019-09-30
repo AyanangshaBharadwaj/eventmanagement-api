@@ -27,12 +27,16 @@ public class Organizer extends AbstractEntity {
 	public void setEvents(Set<Event> events) {
 		this.events = events;
 	}
-	
+
+	public Long getResourceId() {
+		return this.id;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
-		return Objects.equals(id, ((Organizer)obj).id);
+		return Objects.equals(id, ((Organizer) obj).id);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

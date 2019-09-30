@@ -14,9 +14,14 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"started","resourceId"})
 @Entity
 public class Event extends AbstractEntity {
 	private String name;
+	@JsonProperty("Desc")
 	private String description;
 	private ZonedDateTime startTime;
 	private ZonedDateTime endTime;
@@ -103,11 +108,15 @@ public class Event extends AbstractEntity {
 		this.venue = venue;
 	}
 
+	public Long getResourceId() {
+		return this.id;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
-		return Objects.equals(id, ((Event)obj).id);
+		return Objects.equals(id, ((Event) obj).id);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
